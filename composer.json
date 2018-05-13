@@ -29,8 +29,15 @@
 	},
 	"autoload" : {
 		"psr-4" : {
-			"AvoRed\\FixedRate\\" : "src/"
+			"AvoRed\\CashOnDelivery\\" : "src/"
 		}
 	},
-	"homepage" : "https://www.avored.com"
+	"homepage" : "https://www.avored.com",
+	"support" : {
+		"email" : "ind.purvesh@gmail.com",
+		"issues" : "https://www.avored.com/discussion",
+		"forum" : "https://www.avored.com/discussion",
+		"wiki" : "https://www.avored.com/docs",
+		"source" : "https://www.github.com/avored/cash-on-delivery"
+	}
 }
