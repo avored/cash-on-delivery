@@ -22,7 +22,7 @@
 	],
 	"type" : "avored-module",
 	"require" : {
-		"php" : "^7.2",
+		"php": ">=7.1.3",
 		"avored/module-installer" : "1.*"
 	},
 	"autoload" : {
