@@ -1,11 +1,9 @@
-# AvoRed Cash on Delivery Payment Module
+# AvoRed Cash On Delivery Payment Module
 
 ### Installation
 
-    composer require avored/cash-on-delivery
+    composer require avored/cash-on-delivery 
     
+    php artisan migrate
 
 ### How to Use
-
-
-Go to Admin=>Configuration=>Payment=>Enabled Cash on Delivery

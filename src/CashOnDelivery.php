@@ -1,37 +1,32 @@
 <?php
+namespace AvoRed\CashOnDelivery;
 
-namespace AvoRed\CashOnDelivery\Payment;
-
-use AvoRed\Framework\Payment\Payment as AbstractPayment;
-use AvoRed\Framework\Payment\Contracts\Payment as PaymentContract;
-use AvoRed\Framework\Models\Database\Configuration;
-
-class CashOnDelivery extends AbstractPayment implements PaymentContract
+class CashOnDelivery
 {
-    
+
     const CONFIG_KEY = 'payment_cash_on_delivery_enabled';
-    
+
     /**
      * Identifier for this Payment options.
      *
      * @var string
      */
-    protected $identifier = 'cash-on-delivery';
-    
+    protected $identifier = 'a-cash-on-delivery';
+
     /**
      * Title for this Payment options.
      *
      * @var string
      */
     protected $name = 'Cash On Delivery';
-    
+
     /**
      * Payment options View Path.
      *
      * @var string
      */
-    protected $view = 'avored-cash-on-delivery::cash-on-delivery';
-    
+    protected $view = 'a-cash-on-delivery::index';
+
     /**
      * Get Identifier for this Payment options.
      *
@@ -41,17 +36,17 @@ class CashOnDelivery extends AbstractPayment implements PaymentContract
     {
         return $this->identifier;
     }
-    
+
     public function enable()
     {
-        $isEnabled = Configuration::getConfiguration(self::CONFIG_KEY);
-        if (null === $isEnabled || false == $isEnabled) {
-            return false;
-        }
-        
         return true;
     }
-    
+
+    public function process()
+    {
+        //
+    }
+
     /**
      * Get Title for this Payment Option.
      *
@@ -61,17 +56,26 @@ class CashOnDelivery extends AbstractPayment implements PaymentContract
     {
         return $this->name;
     }
-    
+
     /**
      * Payment Option View Path.
-     *
      * return String
      */
     public function view()
     {
         return $this->view;
     }
-    
+
+    /**
+     * Render Payment Option
+     * return String
+     */
+    public function render()
+    {
+        return view($this->view())->with($this->with());
+    }
+
+
     /**
      * Payment Option View Data.
      *
@@ -79,18 +83,6 @@ class CashOnDelivery extends AbstractPayment implements PaymentContract
      */
     public function with()
     {
-        return [];
-    }
-    
-    /*
-     * Process Payment Calculation
-     *
-     */
-    public function process($orderData, $cartProducts, $request)
-    {
-        //EXECUTE API here if any??
-        
-        return true;
+        return ['payment' => $this];
     }
 }
-
